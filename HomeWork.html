@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="External.css">
+    <title>Form</title>
+</head>
+
+<body>
+  <div class="form-container">
+    <h1>School Form</h1>
+     <form action="submit.php" method="POST">
+      <fieldset>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"  placeholder="Enter full name">
+        <br>
+        <label for="dateofbirth">Date of Birth:</label>
+        <input type="date" id="dateofbirth" name="dateofbirth" autocomplete="bday">
+        <br>
+        <label for="gender">Gender:</label>
+        <input type="radio" id="gender-male" name="gender" value="male">male
+        <input type="radio" id="gender-female" name="gender" value="female">female
+        <input type="radio" id="gender-other" name="gender" value="other">other
+        <br>
+          <label for="grade">Grade:</label>
+            <select id="grade" name="grade">
+                <option value="">Select Grade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </fieldset>
+        <fieldset>
+         <h2>Parent/Guardian Information</h2>
+          <label for="parentname">Parent/Guardian Name:</label>
+          <input type="text" id="parentname" name="parentname"  placeholder="Full name of parent/guardian">
+        <br>
+          <label for="contactnumber">Contact Number:</label>
+          <input type="tel" id="contactnumber" name="contactnumber">
+        <br>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" >
+        <br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" >
+    </fieldset>
+
+    <fieldset>
+        <h2>Additional Information</h2>
+        <label for="medicalconditions">Medical Conditions:</label>
+        <input type="radio" id="medical-yes" name="medicalconditions" value="yes">yes
+        <input type="radio" id="medical-no" name="medicalconditions" value="no">no
+        <br>
+        <label for="emergencycontact">Emergency Contact:</label>
+        <input type="text" id="emergencycontact" name="emergencycontact" >
+        <br>
+        <label for="hobbies">Hobbies:</label>
+        <br>
+        <input type="checkbox" id="hobby-reading" name="hobbies" value="reading">reading
+        <input type="checkbox" id="hobby-writing" name="hobbies" value="writing">writing
+        <Br>
+        <input type="checkbox" id="hobby-drawing" name="hobbies" value="drawing">drawing
+        <input type="checkbox" id="hobby-singing" name="hobbies" value="singing">singing
+        <br>
+        <input type="checkbox" id="hobby-dancing" name="hobbies" value="dancing">dancing
+        <input type="checkbox" id="hobby-other" name="hobbies" value="other">other
+        <br>
+    </fieldset>
+    <fieldset>
+        <h2>Preferred School Activities</h2>
+        <label for="preferedschoolactivities">Preferred School Activities:</label>
+        <br>
+        <input type="checkbox" name="preferedschoolactivities" value="science">Science Club
+        <input type="checkbox" name="preferedschoolactivities" value="sports">Sports Club
+        <br>
+        <input type="checkbox" name="preferedschoolactivities" value="music">Music Club
+        <input type="checkbox" name="preferedschoolactivities" value="art">Art Club
+        <br>
+        <input type="checkbox" name="preferedschoolactivities" value="dance">Dance Club
+        <input type="checkbox" name="preferedschoolactivities" value="other">Other
+        <br>
+    </fieldset>
+   <input type="submit" value="Submit">      
+   <input type="reset" value="Reset">
+  </form>
+  </div>
+</body>
+</html>

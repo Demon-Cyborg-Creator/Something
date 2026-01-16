@@ -1,0 +1,580 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+:root {
+    --primary-neon: #00f3ff;
+    --secondary-neon: #ff00ff;
+    --accent-neon: #00ff88;
+    --dark-bg: #0a0e27;
+    --darker-bg: #050810;
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: rgba(0, 243, 255, 0.3);
+    --text-primary: #e0e7ff;
+    --text-secondary: #a5b4fc;
+    --shadow-neon: 0 0 20px rgba(0, 243, 255, 0.5),
+                   0 0 40px rgba(0, 243, 255, 0.3),
+                   0 0 60px rgba(0, 243, 255, 0.1);
+    --shadow-pink: 0 0 20px rgba(255, 0, 255, 0.5),
+                   0 0 40px rgba(255, 0, 255, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    background: var(--darker-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+    animation: backgroundPulse 15s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes backgroundPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 
+        var(--shadow-neon),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    animation: containerFloat 6s ease-in-out infinite;
+    overflow: hidden;
+}
+
+@keyframes containerFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.form-container::before,
+.form-container::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.form-container::before {
+    top: -100px;
+    left: -100px;
+    background: var(--primary-neon);
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+.form-container::after {
+    bottom: -100px;
+    right: -100px;
+    background: var(--secondary-neon);
+    animation: glowPulse 4s ease-in-out infinite 2s;
+}
+
+@keyframes glowPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon), var(--accent-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+    letter-spacing: 3px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-neon), transparent);
+    box-shadow: 0 0 10px var(--primary-neon);
+    animation: lineGlow 2s ease-in-out infinite;
+}
+
+@keyframes lineGlow {
+    0%, 100% { opacity: 0.5; width: 100px; }
+    50% { opacity: 1; width: 200px; }
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--primary-neon);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-left: 15px;
+}
+
+h2::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--accent-neon);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+fieldset {
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(10px);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: visible;
+}
+
+fieldset::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon), var(--accent-neon));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+fieldset:hover::before {
+    opacity: 0.6;
+}
+
+fieldset:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+fieldset:hover label {
+    color: var(--text-primary);
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 243, 255, 0.2);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    position: relative;
+    z-index: 1;
+}
+
+input[type="date"] {
+    cursor: pointer;
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2300f3ff' stroke-width='2'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px 20px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+    z-index: 1;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus {
+    border-color: var(--primary-neon);
+    box-shadow: 
+        0 0 15px rgba(0, 243, 255, 0.4),
+        inset 0 0 15px rgba(0, 243, 255, 0.1);
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateX(5px);
+}
+
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="email"]::placeholder {
+    color: rgba(165, 180, 252, 0.5);
+}
+
+select {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 243, 255, 0.2);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300f3ff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+select:hover {
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+select:focus {
+    border-color: var(--primary-neon);
+    box-shadow: 
+        0 0 15px rgba(0, 243, 255, 0.4),
+        inset 0 0 15px rgba(0, 243, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+select option {
+    background: var(--darker-bg);
+    color: var(--text-primary);
+    padding: 10px;
+}
+
+input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-neon);
+    border-radius: 50%;
+    margin-right: 8px;
+    margin-left: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+input[type="radio"]:hover {
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    transform: scale(1.1);
+}
+
+input[type="radio"]:checked {
+    background: var(--primary-neon);
+    box-shadow: 
+        0 0 15px var(--primary-neon),
+        inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--darker-bg);
+    border-radius: 50%;
+}
+
+input[type="radio"] + label,
+label:has(+ input[type="radio"]) {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 20px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-neon);
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-left: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+input[type="checkbox"]:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    transform: scale(1.1);
+}
+
+input[type="checkbox"]:checked {
+    background: var(--accent-neon);
+    box-shadow: 
+        0 0 15px var(--accent-neon),
+        inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--darker-bg);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input[type="checkbox"] + label,
+label:has(+ input[type="checkbox"]) {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 20px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+    cursor: pointer;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 15px 40px;
+    margin: 20px 10px 0 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+input[type="submit"] {
+    background: linear-gradient(135deg, var(--primary-neon), var(--accent-neon));
+    color: var(--darker-bg);
+    box-shadow: 0 5px 20px rgba(0, 243, 255, 0.4);
+}
+
+input[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+input[type="submit"]:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+input[type="submit"]:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 10px 30px rgba(0, 243, 255, 0.6),
+        0 0 40px rgba(0, 243, 255, 0.4);
+}
+
+input[type="submit"]:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+input[type="reset"] {
+    background: rgba(255, 0, 255, 0.2);
+    color: var(--secondary-neon);
+    border: 2px solid var(--secondary-neon);
+    box-shadow: 0 5px 20px rgba(255, 0, 255, 0.2);
+}
+
+input[type="reset"]:hover {
+    background: rgba(255, 0, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 30px rgba(255, 0, 255, 0.4),
+        0 0 40px rgba(255, 0, 255, 0.3);
+}
+
+input[type="reset"]:active {
+    transform: translateY(-1px);
+}
+
+br {
+    display: block;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 25px;
+        margin: 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    input[type="submit"],
+    input[type="reset"] {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-neon), var(--secondary-neon));
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--accent-neon), var(--primary-neon));
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+.form-container {
+    background-image: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 243, 255, 0.1),
+        transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--accent-neon);
+    outline-offset: 2px;
+}
